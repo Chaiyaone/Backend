@@ -1,2 +1,2 @@
 # Frorntend
-Duplicate from Frontend Javascript Project
+Duplicate from Backend Javascript Project
