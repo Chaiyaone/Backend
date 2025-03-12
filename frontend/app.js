@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
@@ -39,7 +40,7 @@ app.use("/issue",issueRoutes)
 app.use("/general",generalRoutes)
 
 const port = process.env.PORT || 3000;
-console.log(port)
+console.log(process.env.PORT)
 app.listen(port, () => {
   console.log(`Frontend server is running on http://localhost:${port}`);
 });
