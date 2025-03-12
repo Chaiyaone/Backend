@@ -39,6 +39,7 @@ app.use("/issue",issueRoutes)
 app.use("/general",generalRoutes)
 
 const port = process.env.PORT || 3000;
+console.log(port)
 app.listen(port, () => {
   console.log(`Frontend server is running on http://localhost:${port}`);
 });
