@@ -16,6 +16,8 @@ app.use('/auth',authRoutes)
 app.use('/issue',issueRoute)
 app.use('/completed',completedRoutes)
 
+console.log( process.env.PORT)
+
 sequelize.sync()
     .then(() => {
         const port = process.env.PORT || 3000;
