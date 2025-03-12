@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Main</title>
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="dashboard-container">
+        <div class="logout-container">
+            <button id="logoutButton" class="logout-button">
+                <a href="/"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ </a>
+            </button>
+        </div>
+        <div class="main-content">
+            <h1 class="header">Admin Management</h1>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="card-value">
+                        <a href="/users" class="nav-link">
+                            <i class="fas fa-users"></i>
+                            จัดการผู้ใช้งาน
+                        </a>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="card-value">
+                        <a href="/equipments" class="nav-link">
+                            <i class="fas fa-toolbox"></i>
+                            จัดการอุปกรณ์
+                        </a>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="card-value">
+                        <a href="/issue" class="nav-link">
+                            <i class="fas fa-exclamation-circle"></i>
+                            อนุมัติปัญหา
+                        </a>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="card-value">
+                        <a href="/issue/completed" class="nav-link">
+                            <i class="fas fa-chart-bar"></i>
+                            รายงาน
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Kanit", sans-serif;
+}
+
+.background {
+    position: absolute;
+    inset: 0;
+    background: url("../static/bg.png") no-repeat center center/cover;
+    filter: blur(5px);
+    z-index: -1;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* ทำให้ body สูงเต็มหน้าจอ */
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #007BFF;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #007BFF;
+}
+
+input[type="submit"] {
+    padding: 12px 24px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #218838;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: #0056b3;
+}

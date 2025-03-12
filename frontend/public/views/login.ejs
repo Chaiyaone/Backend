@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="../css/login.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Kanit:wght@100..900&family=Ubuntu&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="background"></div>
+
+  <div class="login-container">
+    <h1>ระบบแจ้งซ่อม</h1>
+    <p>เข้าสู่ระบบเพื่อแจ้งปัญหา</p>
+
+    <form id="loginForm" method="post" action="/auth/login">
+      <div class="form-group">
+        <label>Username:</label>
+        <input type="text" name="username" required>
+      </div>
+
+      <div class="form-group">
+        <label>Password:</label>
+        <input type="password" name="password" required>
+      </div>
+
+      <button type="submit" class="btn">เข้าสู่ระบบ</button>
+    </form>
+  </div>
+
+</body>
+
+</html>

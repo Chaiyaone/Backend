@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>รายชื่อผู้ใช้งาน</title>
+  <link rel="stylesheet" href="/css/eq.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script>
+   
+    document.addEventListener("DOMContentLoaded", function () {
+      const tableBody = document.getElementById("equipment-list");
+      const rows = Array.from(tableBody.children);
+
+      rows.sort((a, b) => {
+        const idA = parseInt(a.dataset.id, 10);
+        const idB = parseInt(b.dataset.id, 10);
+        return idA - idB;
+      });
+
+      rows.forEach(row => tableBody.appendChild(row));
+    });
+  </script>
+
+</head>
+
+<body>
+  <div class="background"></div>
+  <div class="container">
+    <h1>รายชื่อผู้ใช้งาน</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>ขื่อผู้ใข้งาน</th>
+        </tr>
+      </thead>
+      <tbody id="equipment-list">
+        <% if (users.length > 0) { %>
+          <% users.forEach(user => { %>
+            <% if (user.role !== 'admin' && user.role !== 'technician') { %>
+              <tr data-id="<%= user.id %>">
+                <td><%= user.id %></td>
+                <td><%= user.username %></td>
+              </tr>
+            <% } %>
+          <% }) %>
+        <% } else { %>
+          <tr>
+            <td colspan="2">ไม่มีผู้ใช้ที่สามารถแสดงได้</td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+    <div>
+      <% if (currentPage > 1) { %>
+        <a href="/general/user?page=<%= currentPage - 1 %>">◀ ก่อนหน้า</a>
+      <% } %>
+      
+      <span>หน้า <%= currentPage %> / <%= totalPages %></span>
+      
+      <% if (currentPage < totalPages) { %>
+        <a href="/general/user?page=<%= currentPage + 1 %>">ถัดไป ▶</a>
+      <% } %>
+    </div>
+
+    <button class="back-button" onclick="window.location.href='/index'">ย้อนกลับ</button>
+  </div>
+</body>
+
+</html>

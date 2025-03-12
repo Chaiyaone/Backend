@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายการแจ้งปัญห</title>
+    <link rel="stylesheet" href="/css/eq.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        function confirmDelete(issueID) {
+      if (confirm("คุณแน่ใจหรือไม่ว่าต้องการอนุมัติงานนี้?")) {
+        window.location.href = `/issue/confirm/${issueID}`;
+      }
+    }
+        document.addEventListener("DOMContentLoaded", function () {
+            const tableBody = document.getElementById("equipment-list");
+            const rows = Array.from(tableBody.children);
+
+            rows.sort((a, b) => {
+                const idA = parseInt(a.dataset.id, 10);
+                const idB = parseInt(b.dataset.id, 10);
+                return idA - idB;
+            });
+
+            rows.forEach(row => tableBody.appendChild(row));
+        });
+    </script>
+
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <h1>รายการแจ้งปัญหา</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ชื่อผู้แจ้ง</th>
+                    <th>ชื่ออุปกรณ์</th>
+                    <th>รายละเอียดปัญหา</th>
+                    <th>ช่างที่รับผิดชอบ</th>
+                    <th>สถานะ</th>
+                    <th>วันที่แจ้ง</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="equipment-list">
+                <% if (issues.length> 0) { %>
+                    <% issues.forEach(issue=> { %>
+                        <tr data-id="<%= issue.id %>">
+                            <td>
+                                <%= issue.id %>
+                            </td>
+                            <td>
+                                <%= issue.username %>
+                            </td>
+                            <td>
+                                <%= issue.equipment_name %>
+                            </td>
+                            <td>
+                                <%= issue.description %>
+                            </td>
+                            <td>
+                                <%= issue.technician_name %>
+                            </td>
+                            <td>
+                                <%= issue.status %>
+                            </td>
+                            <td>
+                                <%= new Date(issue.created_at).toLocaleDateString() %>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button onclick="confirmDelete(<%= issue.id %>)" class="confirm-button">Approve</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <% }) %>
+                            <% } else { %>
+                                <tr>
+                                    <td colspan="6" class="no-data">ไม่มีข้อมูลการแจ้งปัญหา</td>
+                                </tr>
+                                <% } %>
+            </tbody>
+        </table>
+        <div>
+            <% if (currentPage > 1) { %>
+              <a href="/issue?page=<%= currentPage - 1 %>">◀ ก่อนหน้า</a>
+            <% } %>
+          
+            <span>หน้า <%= currentPage %> / <%= totalPages %></span>
+          
+            <% if (currentPage < totalPages) { %>
+              <a href="/issue?page=<%= currentPage + 1 %>">ถัดไป ▶</a>
+            <% } %>
+          </div>
+
+        <button class="back-button" onclick="window.location.href='/main'">ย้อนกลับ</button>
+    </div>
+</body>
+
+</html>

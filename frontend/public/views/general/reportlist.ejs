@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แจ้งปัญห</title>
+    <link rel="stylesheet" href="/css/eq.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            const tableBody = document.getElementById("equipment-list");
+            const rows = Array.from(tableBody.children);
+
+            rows.sort((a, b) => {
+                const idA = parseInt(a.dataset.id, 10);
+                const idB = parseInt(b.dataset.id, 10);
+                return idA - idB;
+            });
+
+            rows.forEach(row => tableBody.appendChild(row));
+        });
+        function convertBuddhistToGregorian(dateStr) {
+            if (!dateStr) return "N/A";
+            let [day, month, year] = dateStr.split("/").map(Number);
+            return `${day}/${month}/${year - 543}`;
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <h1>แจ้งปัญหา</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ชื่อผู้แจ้ง</th>
+                    <th>ชื่ออุปกรณ์</th>
+                    <th>รายละเอียดปัญหา</th>
+                    <th>สถานะ</th>
+                    <th>วันที่แจ้ง</th>
+                </tr>
+            </thead>
+            <tbody id="equipment-list">
+                <% if (issues.length> 0) { %>
+                    <% issues.forEach(issue=> { %>
+                        <tr data-id="<%= issue.id %>">
+                            <td>
+                                <%= issue.id %>
+                            </td>
+                            <td>
+                                <%= issue.username %>
+                            </td>
+                            <td>
+                                <%= issue.equipment_name %>
+                            </td>
+                            <td>
+                                <%= issue.description %>
+                            </td>
+                            <td>
+                                <%= issue.status %>
+                            </td>
+                            <td>
+                                <%= new Date(issue.created_at).toLocaleDateString() %>
+                            </td>
+                        </tr>
+                        <% }) %>
+                            <% } else { %>
+                                <tr>
+                                    <td colspan="6" class="no-data">ไม่มีข้อมูลการแจ้งปัญหา</td>
+                                </tr>
+                                <% } %>
+            </tbody>
+        </table>
+        <div>
+            <% if (currentPage > 1) { %>
+              <a href="/general/reportlist?page=<%= currentPage - 1 %>">◀ ก่อนหน้า</a>
+            <% } %>
+          
+            <span>หน้า <%= currentPage %> / <%= totalPages %></span>
+          
+            <% if (currentPage < totalPages) { %>
+              <a href="/general/reportlist?page=<%= currentPage + 1 %>">ถัดไป ▶</a>
+            <% } %>
+          </div>
+
+        <button class="back-button" onclick="window.location.href='/index'">ย้อนกลับ</button>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+    <link rel="stylesheet" href="/css/eq_edit.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <h1>Add User</h1>
+        <form action="/users/add" method="post">
+            <label for="equipment_name">Username:</label>
+            <input type="text" name="username" id="username" required>
+            <label for="password">Password:</label>
+            <input type="text" name="password" id="password" value="-">
+            <label for="phone">Phone:</label>
+            <input type="text" name="phone" id="phone" required>
+            <label for="phone">Role:</label>
+            <select name="role" id="role">
+                <option value="user">user</option>
+                <option value="admin">admin</option>
+                <option value="technician">technician</option>
+            </select>
+            <input type="submit" value="Add">
+        </form>
+        <a href="/users" class="back-link">Back to List</a>
+    </div>
+</body>
+
+</html>

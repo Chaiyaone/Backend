@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>รายการอุปกรณ์</title>
+  <link rel="stylesheet" href="/css/eq.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script>
+    function confirmDelete(equipmentId) {
+      if (confirm("คุณแน่ใจหรือไม่ว่าต้องการลบอุปกรณ์นี้?")) {
+        window.location.href = `/equipment/delete/${equipmentId}`;
+      }
+    }
+
+    function confirmEdit(equipmentId) {
+      if (confirm("คุณแน่ใจหรือไม่ว่าต้องการแก้ไขอุปกรณ์นี้?")) {
+        window.location.href = `/equipment/edit/${equipmentId}`;
+      }
+    }
+
+    
+    document.addEventListener("DOMContentLoaded", function () {
+      const tableBody = document.getElementById("equipment-list");
+      const rows = Array.from(tableBody.children);
+
+      rows.sort((a, b) => {
+        const idA = parseInt(a.dataset.id, 10);
+        const idB = parseInt(b.dataset.id, 10);
+        return idA - idB;
+      });
+
+      rows.forEach(row => tableBody.appendChild(row));
+    });
+  </script>
+
+</head>
+
+<body>
+  <div class="background"></div>
+  <div class="container">
+    <h1>รายการอุปกรณ์</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>ชื่ออุปกรณ์</th>
+          <th>ประเภท</th>
+          <th>จำนวนครั้งที่ซ่อม</th>
+        </tr>
+      </thead>
+      <tbody id="equipment-list">
+        <% if (equipment.length > 0) { %>
+          <% equipment.forEach(equip => { %>
+            <tr data-id="<%= equip.id %>">
+              <td><%= equip.id %></td>
+              <td><%= equip.equipment_name %></td>
+              <td><%= equip.equipment_type %></td>
+              <td><%= equip.repair_count %></td>
+            </tr>
+          <% }) %>
+        <% } else { %>
+          <tr>
+            <td colspan="6" class="no-data">ไม่มีข้อมูลอุปกรณ์</td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+    <div>
+      <% if (currentPage > 1) { %>
+        <a href="/general/equipments?page=<%= currentPage - 1 %>">◀ ก่อนหน้า</a>
+      <% } %>
+      
+      <span>หน้า <%= currentPage %> / <%= totalPages %></span>
+      
+      <% if (currentPage < totalPages) { %>
+        <a href="/general/equipments?page=<%= currentPage + 1 %>">ถัดไป ▶</a>
+      <% } %>
+    </div>
+    
+    <button class="back-button" onclick="window.location.href='/index'">ย้อนกลับ</button>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Equipment</title>
+    <link rel="stylesheet" href="/css/eq_edit.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <h1>Edit Equipment</h1>
+        <form action="/equipment/edit/<%= equipment.id %>" method="post">
+            <label for="equipment_name">Name:</label>
+            <input type="text" name="equipment_name" id="equipment_name" value="<%= equipment.equipment_name%>"
+                required>
+            <label for="equipment_type">Type:</label>
+            <input type="text" name="equipment_type" id="equipment_type" value="<%= equipment.equipment_type %>"
+                required>
+            <input type="submit" value="Update">
+        </form>
+        <a href="/equipments" class="back-link">Back to List</a>
+    </div>
+</body>
+
+</html>

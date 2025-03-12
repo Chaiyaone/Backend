@@ -1,0 +1,100 @@
+
+body {
+  font-family: "Kanit", sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.background {
+  position: fixed;
+  inset: 0;
+  background: url("../static/bg.png") no-repeat center center/cover;
+  filter: blur(5px);
+  z-index: -1;
+}
+
+
+.container {
+  width: 400px;
+  padding: 25px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #007bff;
+}
+
+
+.input-box {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #2575fc;
+  outline: none;
+}
+
+textarea {
+  resize: none;
+  height: 120px;
+}
+
+
+button {
+  width: 100%;
+  font-family: "Kanit", sans-serif;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+
+button[type="submit"] {
+  background: #2575fc;
+  color: white;
+}
+
+button[type="submit"]:hover {
+  background: #0056b3;
+}
+
+
+.back-button {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.back-button:hover {
+  background: #bbb;
+}
